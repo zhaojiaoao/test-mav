@@ -7,8 +7,8 @@
 #include <csignal>
 #include <functional>
 
-std::atomic<bool> running{true};
-
+std::atomic<bool> running{ true };
+     
 void signal_handler(int) {
     running = false;
     std::cout << "\nShutting down..." << std::endl;
@@ -31,6 +31,7 @@ void send_heartbeat(MavlinkUdp& mavlink_udp, uint8_t sysid, uint8_t compid) {
     std::cout << "Sent HEARTBEAT from sysid=" << static_cast<int>(sysid) 
               << ", compid=" << static_cast<int>(compid) << std::endl;
 }
+
 
 // 创建并发送 COMMAND_LONG 消息
 void send_arm_command(MavlinkUdp& mavlink_udp, uint8_t target_sysid, uint8_t target_compid) {
